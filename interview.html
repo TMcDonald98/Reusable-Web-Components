@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <style>
+    /* styles to get you started, included by default */
+    :root {
+      color: #333;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: calc(18 / 14);
+    }
+    body {
+      background: #eee;
+      box-sizing: border-box; /* should this be included by default? */
+      margin: 1rem;
+    }
+	/* end styles included by default */
+  </style>
+  <link rel="stylesheet" href="./interview.css" >
+</head>
+<body>
+    <main id="main">
+    </main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="interview.js"></script>
+<script>
+    //  I figure there is a mor effecient way to do this but I wanted to show off my deisgn and needed to fill in content
+    // Perhaps by running through the json maps and using their titles as the id of all relevant elements to access them
+
+    
+
+
+const content = [
+    {
+        heading: {
+            title: 'Card titles can be surprisingly long and verbose, especially in translation',
+            dismiss: {
+                label: 'close'
+            }
+        },
+        content: [
+            {
+                media: {
+                    left: {
+                        image: {
+                            url: 'https://via.placeholder.com/150',
+                            description: 'this is an image'
+                        },
+                        link: {
+                            url: '/some/image-gallery/',
+                            description: 'view an entire gallery of images'
+                        }
+                    }
+                },
+                main: {
+                    text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.`,
+                    link: {
+                        url: '/somewhere/else',
+                        description: 'go somewhere else'
+                    }
+                }
+
+            },
+            {
+                link: {
+                    url: '/to/another/view',
+                    description: 'see a different view'
+                },
+                media: {
+                    right: {
+                        image: {
+                            url: 'https://via.placeholder.com/180x150',
+                            description: 'this is another image'
+                        }
+                    }
+                },
+                main: {
+                    text: `Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.`
+                }
+
+            }
+        ]
+
+    },
+    {
+        content: [
+            {
+                media: {
+                    left: {
+                        image: {
+                            url: 'https://via.placeholder.com/160',
+                            description: 'this is an image'
+                        }
+                    },
+                    right: {
+                        text: `$123.45`
+                    }
+                },
+                main: {
+                    text: `Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur.`,
+                    link: {
+                        url: '/somewhere/else',
+                        description: 'go somewhere else'
+                    }
+                }
+
+            },
+            {
+                main: {
+                    text: `Excepteur sint occaecat
+                        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
+                }
+
+            }
+        ]
+
+    }
+];
+
+    // document.getElementById("title").innerHTML = content[0].heading.title;
+    // document.getElementById("dismiss").innerHTML = content[0].heading.dismiss.label;
+    // document.getElementById("media1").src = content[0].content[0].media.left.image.url;
+    // document.getElementById("p1").innerHTML = content[0].content[0].main.text;
+    // document.getElementById("media2").src = content[0].content[1].media.right.image.url;
+    // document.getElementById("p2").innerHTML = content[0].content[1].main.text;
+
+
+    $(function(){
+        $.each(content, function(i, item){
+            var node = document.createElement("content-card");
+            node.data = JSON.stringify(item);
+            // console.log(node.data);
+            document.getElementById("main").appendChild(node);
+
+        });
+        
+    });
+    
+  </script>
+</body>
+</html>
